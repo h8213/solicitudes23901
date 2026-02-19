@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios eBROU - BROU</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { background-color: #c3ced9 !important; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            margin: 0;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #004a8c;
+            width: 100%;
+        }
+
+        .header .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 10px 15px;
+        }
+
+        .header .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* ===== BANNER / SLIDER ===== */
+        .banner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .banner > img {
+            width: 100%;
+            height: auto;
+            display: block;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        .banner .bannercontenido {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .banner .bannercontenido .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .banner .bannercontenido h1 {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300;
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .banner .bannercontenido p {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 300;
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+
+        .btn-accion {
+            display: inline-block;
+            background: #358bde;
+            border-radius: 4px;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 12px 25px;
+            position: relative;
+            text-shadow: none;
+            box-shadow: none;
+            line-height: 1;
+        }
+
+        .btn-accion:hover {
+            background: #2a7ac7;
+        }
+
+        .btn-accion i {
+            margin-left: 10px;
+            font-style: normal;
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .main-content {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 25px 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-md-8 {
+            width: 66.666%;
+            padding: 0 15px;
+        }
+
+        .col-md-4 {
+            width: 33.333%;
+            padding: 0 15px;
+        }
+
+        /* ===== CAJABLANCA ===== */
+        .cajablanca {
+            background: #fff;
+            border: 1px solid #e4e4e4;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            float: left;
+            width: 100%;
+        }
+
+        .cajablanca.promo {
+            min-height: 151px;
+        }
+
+        .cajablanca.promo img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: auto;
+        }
+
+        .cajablanca.promo h3 {
+            margin-bottom: 13px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .cajablanca.promo .textos {
+            width: 252px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cajablanca.nbb {
+            border-bottom: none;
+        }
+
+        .cajablanca.nobt {
+            border-top: none;
+        }
+
+        .cajablanca.nbl {
+            border-left: none;
+        }
+
+        .cajablanca h3 {
+            font-size: 18px;
+            color: #348bde;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 600;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .cajablanca h3 a {
+            color: #348bde;
+            text-decoration: none;
+        }
+
+        .cajablanca h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .cajablanca .textos p {
+            color: #525252;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        .cajablanca .descripcion {
+            color: #333;
+            font-size: 13px;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 12px;
+            line-height: 15px;
+        }
+
+        /* ===== DESCARGA LIST ===== */
+        ul.descarga {
+            list-style: none;
+            float: left;
+            width: 100%;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        ul.descarga li {
+            float: left;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
+        ul.descarga li a {
+            display: block;
+            width: 100%;
+            position: relative;
+            color: #006cd8;
+            font-size: 14px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            padding-right: 25px;
+        }
+
+        ul.descarga li a:hover {
+            text-decoration: underline;
+        }
+
+        ul.descarga li a .arrow {
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            font-size: 11px;
+            color: #006cd8;
+            font-style: normal;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .novedad-multipagos {
+            background: #fff;
+            border: 1px solid #e4e4e4;
+            padding: 20px;
+            margin-bottom: 0;
+            float: left;
+            width: 100%;
+        }
+
+        .novedad-multipagos h3 {
+            font-size: 18px;
+            color: #348bde;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .novedad-multipagos .contenido {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .novedad-multipagos .contenido p {
+            color: #525252;
+            font-size: 13px;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 18px;
+            flex: 1;
+        }
+
+        .novedad-multipagos .contenido img {
+            width: 70px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .atencioncliente {
+            background: #f5f5f5;
+            border: 1px solid #e4e4e4;
+            border-top: none;
+            padding: 20px;
+            float: left;
+            width: 100%;
+        }
+
+        .atencioncliente .subtitulogeneral {
+            font-size: 18px;
+            color: #1f1f1f;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .atencioncliente ul.descarga li a {
+            color: #006cd8;
+        }
+
+        /* ===== SISTEMA PAGOS INTERBANCARIOS ===== */
+        .cajablanca.codigo .textos p {
+            color: #525252;
+            font-size: 13px;
+            line-height: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-section {
+            background-color: #c3ced9;
+            padding: 25px 0 15px;
+            float: left;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .footer-section .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-section .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .footer-section .logo {
+            padding: 0 15px;
+        }
+
+        .footer-section .logo img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .footer-section .rrss {
+            margin-top: 8px;
+        }
+
+        .footer-section .rrss .titulo {
+            color: #333;
+            font-size: 12px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .footer-section .rrss a {
+            display: inline-block;
+            margin-right: 3px;
+        }
+
+        .footer-section .rrss a img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-section .footer-links {
+            padding: 0 15px;
+            flex: 1;
+        }
+
+        .footer-section .footer-links .copyright-in {
+            font-size: 11px;
+            color: #666;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .footer-section .footer-cols {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .footer-section .footer-col {
+            min-width: 140px;
+            margin-right: 25px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section .footer-col .titulo {
+            font-size: 12px;
+            color: #1f1f1f;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .footer-section .footer-col .subtitulo {
+            font-size: 11px;
+            color: #666;
+            font-family: 'Segoe UI', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-section .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-section .footer-col ul li {
+            margin-bottom: 3px;
+        }
+
+        .footer-section .footer-col ul li a {
+            color: #006cd8;
+            font-size: 12px;
+            font-family: 'Segoe UI', sans-serif;
+            text-decoration: none;
+        }
+
+        .footer-section .footer-col ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CLEARFIX ===== */
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* ===== DESKTOP ONLY ===== */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .col-md-8, .col-md-4 {
+                width: 100%;
+            }
+
+            .desktop-only { display: none; }
+            .mobile-only { display: block; }
+
+            .header .container {
+                text-align: center;
+            }
+
+            .banner .bannercontenido h1 {
+                font-size: 32px;
+            }
+
+            .banner .bannercontenido p {
+                font-size: 15px;
+            }
+
+            .btn-accion {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
+
+            .cajablanca.promo .textos {
+                width: auto;
+            }
+
+            .cajablanca.nbl {
+                border-left: 1px solid #e4e4e4;
+            }
+
+            .cajablanca.nobt.mobile-bt {
+                border-top: 1px solid #e4e4e4;
+            }
+
+            .footer-section .row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-section .logo {
+                margin-bottom: 15px;
+            }
+
+            .footer-section .rrss {
+                margin-bottom: 15px;
+            }
+
+            .footer-section .footer-cols {
+                justify-content: center;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .banner {
+                min-height: 250px;
+            }
+
+            .banner > img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 85% center;
+            }
+
+            .banner .bannercontenido {
+                position: relative;
+                min-height: 250px;
+            }
+
+            .banner .bannercontenido .container {
+                padding: 25px 20px;
+            }
+
+            .banner .bannercontenido h1 {
+                font-size: 30px;
+                margin-bottom: 5px;
+            }
+
+            .banner .bannercontenido p {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .btn-accion {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            .cajablanca {
+                padding: 15px;
+            }
+
+            .cajablanca.promo img {
+                height: auto;
+                width: 45%;
+                top: auto;
+                bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="container">
+            <a class="logo" href="#">
+                <img src="img/layout_set_logo.png" alt="Banco República">
+            </a>
+        </div>
+    </div>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <img src="img/slider-ebrou-1280x285.jpg" alt="eBROU">
+        <div class="bannercontenido">
+            <div class="container">
+                <div>
+                    <h1>eBROU</h1>
+                    <p>fácil, cómodo y seguro</p>
+                    <a href="#" class="btn-accion">Participar <i>›</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="main-content">
+        <div class="row">
+            <!-- COLUMNA IZQUIERDA (8 cols) -->
+            <div class="col-md-8">
+
+                <!-- DESKTOP: Banca por Internet + Llave Digital lado a lado -->
+                <div class="desktop-only">
+                    <div class="row">
+                        <div style="width:50%;float:left;">
+                            <div class="cajablanca promo" style="border-right:none;">
+                                <img src="img/banca-internet.png" alt="Banca por Internet">
+                                <h3><a href="#">Banca por Internet</a></h3>
+                                <div class="textos">
+                                    <p>Con eBROU accedes a tu Banco en forma ágil y segura, desde cualquier dispositivo y lugar donde te encuentres.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width:50%;float:left;">
+                            <div class="cajablanca promo" style="border-left:none;">
+                                <img src="img/banca-telefonica.png" alt="Llave Digital Virtual">
+                                <h3><a href="#">Llave Digital Virtual</a></h3>
+                                <div class="textos">
+                                    <p>La Llave Digital Virtual ofrece, sin costo, mayor seguridad y protección al momento de realizar operaciones bancarias online.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div style="width:50%;float:left;">
+                            <div class="cajablanca nbb nobt" style="border-right:none;">
+                                <h3><a href="#">Multipagos</a></h3>
+                                <div class="textos">
+                                    <ul class="descarga">
+                                        <li><a href="#">Servicios disponibles <span class="arrow">›</span></a></li>
+                                        <li><a href="#">Sitios web habilitados <span class="arrow">›</span></a></li>
+                                        <li><a href="#">Novedades <span class="arrow">›</span></a></li>
+                                        <li><a href="#">Billeteras Electrónicas <span class="arrow">›</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width:50%;float:left;">
+                            <div class="cajablanca nobt" style="border-left:none;">
+                                <h3><a href="#">Transferencias a celulares</a></h3>
+                                <div class="textos">
+                                    <p>Ahora podés enviar y recibir transferencias a un número de celular, en lugar de tener que recordar los números de cuenta.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="cajablanca nobt codigo">
+                        <h3><a href="#">Sistema de Pagos Interbancarios</a></h3>
+                        <div class="textos">
+                            <p>Podés enviar y recibir transferencias a cuentas de otras instituciones en forma online las 24 horas, los 365 días del año.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- MOBILE: Banca por Internet con imagen -->
+                <div class="mobile-only">
+                    <div class="cajablanca promo" style="margin-bottom:0;">
+                        <img src="img/banca-internet.png" alt="Banca por Internet">
+                        <h3><a href="#">Banca por Internet</a></h3>
+                        <div class="textos">
+                            <p>Con eBROU accedes a tu Banco en forma ágil y segura, desde cualquier dispositivo y lugar donde te encuentres.</p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="cajablanca nbb mobile-bt">
+                        <h3><a href="#">Multipagos</a></h3>
+                        <div class="textos">
+                            <ul class="descarga">
+                                <li><a href="#">Servicios disponibles <span class="arrow">›</span></a></li>
+                                <li><a href="#">Sitios web habilitados <span class="arrow">›</span></a></li>
+                                <li><a href="#">Novedades <span class="arrow">›</span></a></li>
+                                <li><a href="#">Billeteras Electrónicas <span class="arrow">›</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA DERECHA / SIDEBAR (4 cols) - solo desktop -->
+            <div class="col-md-4 desktop-only">
+                <div class="novedad-multipagos">
+                    <h3>Novedad - Multipagos</h3>
+                    <div class="contenido">
+                        <p>Pagá tus boletos con el nuevo sistema STM Pospago.</p>
+                        <img src="img/thumb-multipagos.png" alt="Multipagos">
+                    </div>
+                </div>
+
+                <div class="atencioncliente">
+                    <p class="subtitulogeneral">Atención al Cliente</p>
+                    <ul class="descarga">
+                        <li><a href="#">Consultas <span class="arrow">›</span></a></li>
+                        <li><a href="#">Gestión de Reclamos <span class="arrow">›</span></a></li>
+                        <li><a href="#">Sucursales y Cajeros <span class="arrow">›</span></a></li>
+                        <li><a href="#">Denuncia de tarjetas <span class="arrow">›</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="img/logo-footer.png" alt="Banco República">
+                    <div class="rrss">
+                        <div class="titulo">Nuestras Redes Sociales</div>
+                        <div>
+                            <a href="#"><img src="img/wpp.png" width="24" height="24" alt="WhatsApp"></a>
+                            <a href="#"><img src="img/ig.png" width="24" height="24" alt="Instagram"></a>
+                            <a href="#"><img src="img/fb.png" width="24" height="24" alt="Facebook"></a>
+                            <a href="#"><img src="img/tw.png" width="24" height="24" alt="Twitter"></a>
+                            <a href="#"><img src="img/in.png" width="24" height="24" alt="LinkedIn"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="copyright-in">&copy; 2026 Banco República - Todos los derechos reservados</div>
+                    <div class="footer-cols">
+                        <div class="footer-col">
+                            <div class="titulo">PERSONAS</div>
+                            <ul>
+                                <li><a href="#">Préstamos</a></li>
+                                <li><a href="#">Cuentas</a></li>
+                                <li><a href="#">Tarjetas</a></li>
+                                <li><a href="#">Servicios eBROU</a></li>
+                                <li><a href="#">Inversiones</a></li>
+                                <li><a href="#">Otros servicios</a></li>
+                                <li><a href="#">Planes sociales</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <div class="titulo">EMPRESAS</div>
+                            <span class="subtitulo">Industria, comercio y servicios</span>
+                            <ul>
+                                <li><a href="#">Crédito</a></li>
+                                <li><a href="#">Comercio exterior</a></li>
+                                <li><a href="#">Cuentas</a></li>
+                                <li><a href="#">Servicios</a></li>
+                                <li><a href="#">Inversiones</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <div class="titulo">&nbsp;</div>
+                            <span class="subtitulo">Agropecuaria</span>
+                            <ul>
+                                <li><a href="#">Crédito</a></li>
+                                <li><a href="#">Cuentas</a></li>
+                                <li><a href="#">Servicios</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <div class="titulo">INFORMACIÓN INSTITUCIONAL</div>
+                            <ul>
+                                <li><a href="#">Web Institucional</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <div class="titulo">ATENCIÓN AL CLIENTE</div>
+                            <ul>
+                                <li><a href="#">Contáctenos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
